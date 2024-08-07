@@ -1,13 +1,17 @@
 import db from "./db";
 
 
-const createDataTable = () => {
-  db.transaction((tx: any) => {
-    tx.executeSql(
-      "CREATE TABLE IF NOT EXISTS words (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, value TEXT NOT NULL)"
-    );
-  });
+const createDataTable = async () => {
+  await db.execAsync(`
+    PRAGMA journal_mode = WAL;
+    CREATE TABLE IF NOT EXISTS words (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, value TEXT NOT NULL)`
+  );
+  addDefaultData()
 };
+
+const addDefaultData = async () => {
+  await db.execAsync(``)
+}
 
 // const setDataToDB = () => {
 //   try {

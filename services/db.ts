@@ -1,6 +1,5 @@
 
 import * as SQLite from 'expo-sqlite'
 
-
-const db = SQLite.openDatabase('vocabularyWithNotifications.db')
+const db = await SQLite.openDatabaseAsync('vocabularyWithNotifications.db')
 export default db;
